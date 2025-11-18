@@ -1,0 +1,22 @@
+#!/bin/bash
+
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+CONFIG_DIR="$USER_HOME/.ispy"
+CONFIG_USER="$CONFIG_DIR/config"
+
+# Création du répertoire utilisateur si absent
+if [[ ! -d "$CONFIG_DIR" ]]; then
+    mkdir -p "$CONFIG_DIR"
+    chown "$SUDO_USER:$SUDO_USER" "$CONFIG_DIR"
+fi
+
+# Copier le fichier de config modèle si absent
+if [[ ! -f "$CONFIG_USER" ]]; then
+    cp /etc/agentdvr-updater.conf "$CONFIG_USER"
+    chown "$SUDO_USER:$SUDO_USER" "$CONFIG_USER"
+fi
+
+chmod 600 "$CONFIG_USER"
+
+echo "Fichier configuration : $CONFIG_USER"
+echo "Pensez à remplir FREE_USER et FREE_API_KEY"
