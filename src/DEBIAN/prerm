@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Suppression du paquet agentdvr-updater"
+exit 0
