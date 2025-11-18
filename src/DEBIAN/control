@@ -1,0 +1,8 @@
+Package: agentdvr-updater
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Kl3sk <klesk44@gmail.com>
+Depends: bash, expect, curl, util-linux
+Description: Script de maintenance AgentDVR avec backup, update, SMS, cron et automatisation.
